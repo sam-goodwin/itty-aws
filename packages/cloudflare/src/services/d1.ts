@@ -889,14 +889,14 @@ export const PatchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDatabaseResponse",
 }) as any as S.Schema<PatchDatabaseResponse>;
 
-export type DatabaseQueryRequestParamsList = ReadonlyArray<string>;
+export type DatabaseQueryRequestParamsList = ReadonlyArray<unknown>;
 export const DatabaseQueryRequestParamsList = /*@__PURE__*/ S.Array(
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<DatabaseQueryRequestParamsList>;
 
-export type DatabaseQueryRequestBatchItemParamsList = ReadonlyArray<string>;
+export type DatabaseQueryRequestBatchItemParamsList = ReadonlyArray<unknown>;
 export const DatabaseQueryRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<DatabaseQueryRequestBatchItemParamsList>;
 
 export interface DatabaseQueryRequestBatchItem {
@@ -1057,14 +1057,14 @@ export const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryDatabaseResponse",
 }) as any as S.Schema<QueryDatabaseResponse>;
 
-export type DatabaseRawRequestParamsList = ReadonlyArray<string>;
+export type DatabaseRawRequestParamsList = ReadonlyArray<unknown>;
 export const DatabaseRawRequestParamsList = /*@__PURE__*/ S.Array(
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<DatabaseRawRequestParamsList>;
 
-export type DatabaseRawRequestBatchItemParamsList = ReadonlyArray<string>;
+export type DatabaseRawRequestBatchItemParamsList = ReadonlyArray<unknown>;
 export const DatabaseRawRequestBatchItemParamsList = /*@__PURE__*/ S.Array(
-  S.String,
+  S.Unknown,
 ) as any as S.Schema<DatabaseRawRequestBatchItemParamsList>;
 
 export interface DatabaseRawRequestBatchItem {

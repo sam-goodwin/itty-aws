@@ -3,22 +3,22 @@
   "patches": [
     {
       "op": "replace",
-      "path": "/shapes/com.cloudflare.d1#DatabaseQueryRequestBodyD1SingleQueryParamsList/member/target",
+      "path": "/shapes/com.cloudflare.d1#DatabaseQueryRequestParamsList/member/target",
       "value": "smithy.api#Document"
     },
     {
       "op": "replace",
-      "path": "/shapes/com.cloudflare.d1#DatabaseQueryRequestBodyMultipleQueriesBatchItemParamsList/member/target",
+      "path": "/shapes/com.cloudflare.d1#DatabaseQueryRequestBatchItemParamsList/member/target",
       "value": "smithy.api#Document"
     },
     {
       "op": "replace",
-      "path": "/shapes/com.cloudflare.d1#DatabaseRawRequestBodyD1SingleQueryParamsList/member/target",
+      "path": "/shapes/com.cloudflare.d1#DatabaseRawRequestParamsList/member/target",
       "value": "smithy.api#Document"
     },
     {
       "op": "replace",
-      "path": "/shapes/com.cloudflare.d1#DatabaseRawRequestBodyMultipleQueriesBatchItemParamsList/member/target",
+      "path": "/shapes/com.cloudflare.d1#DatabaseRawRequestBatchItemParamsList/member/target",
       "value": "smithy.api#Document"
     }
   ]
